@@ -8,7 +8,7 @@ using System.Net.Sockets;
 
 namespace Parma
 {
-    public class myclient
+    public class HttpClient
     {
         public const int Web_ERROR_UNKNOWN_ERROR = 0;
         public const int Web_ERROR_HOST_NOT_FOUND = -1;
@@ -108,7 +108,7 @@ namespace Parma
 
                 try
                 {
-                    heserver = Dns.EndGetHostEntry(address);
+                    heserver = Dns.GetHostEntry(address);
                     if (heserver.AddressList.Length ==0)
                     {
                         return null;

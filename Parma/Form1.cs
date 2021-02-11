@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Parma
 {
     public partial class Form1 : Form
@@ -15,6 +16,24 @@ namespace Parma
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = "https://www.flenov.info";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = "";
+            Uri Adres = new Uri(textBox1.Text);
+            HttpClient myClient = new HttpClient();
+            myClient.GetPageStatus(Adres);
+
+            StringBuilder sb = new StringBuilder();
+            sb=myClient.PageContent;
+
+            textBox2.Text = sb.ToString();
         }
     }
 }

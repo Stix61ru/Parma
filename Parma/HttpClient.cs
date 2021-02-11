@@ -85,12 +85,13 @@ namespace Parma
         // маленький метод для формирования HTTP-запроса
         protected string GetCommand(Uri url)
         {
-            string command = "GET " + url.PathAndQuery + " HTTP/1.1\r\n";
+            string command = "POST " + url.PathAndQuery + " HTTP/1.1\r\n";
             command += "Host: " + url.Host + "\r\n";
-            command += "Usre-Agent: CyD Network Utilites\r\n";
-            command += "Accept: */* \r\n";
-            command += "Accept-Language: en-us \r\n";
-            command += "Accept-Encoding: gzip, deflate \r\n";
+            command += "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 YaBrowser/20.12.3.140 Yowser/2.5 Safari/537.36";
+            //command += "Usre-Agent: CyD Network Utilites\r\n";
+            //command += "Accept: */* \r\n";
+            //command += "Accept-Language: en-us \r\n";
+            //command += "Accept-Encoding: gzip, deflate \r\n";
             command += "\r\n";
             return command;
         }

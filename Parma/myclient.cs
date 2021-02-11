@@ -94,5 +94,35 @@ namespace Parma
             command += "\r\n";
             return command;
         }
+        // преобразование строки адреса в объект
+        public IPAddress GetAddress(string address)
+        {
+            IPAddress ipAddress = null;
+            try
+            {
+                ipAddress = IPAddress.Parse(address);
+            }
+            catch (Exception)
+            {
+                IPHostEntry heserver;
+
+                try
+                {
+                    heserver = Dns.EndGetHostEntry(address);
+                    if (heserver.AddressList.Length ==0)
+                    {
+                        return null;
+
+                    }
+                    ipAddress = heserver.AddressList[0];
+
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            return ipAddress;
+        }
     }
 }
